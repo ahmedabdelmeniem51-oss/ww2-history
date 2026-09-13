@@ -1,0 +1,2377 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحرب العالمية الثانية | رحلة عبر التاريخ 1939-1945</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&family=Almarai:wght@300;400;700;800&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #C9A961;
+            --gold-light: #E8D5A0;
+            --gold-dark: #A8894A;
+            --olive: #5C6B3F;
+            --olive-dark: #3E4A2A;
+            --khaki: #B8A878;
+            --sand: #D4C4A0;
+            --cream: #F0E8D8;
+            --cream-dark: #DDD0B8;
+            --light: #FAF5E8;
+            --dark: #1A1713;
+            --dark-2: #2A2520;
+            --dark-3: #3A3228;
+            --blood: #8B1A1A;
+            --blood-dark: #6B0F0F;
+            --text: #2D2820;
+            --text-light: #7A6F5C;
+            --shadow: 0 15px 50px rgba(26, 23, 19, 0.2);
+            --shadow-hover: 0 30px 80px rgba(139, 26, 26, 0.3);
+            --radius: 20px;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Almarai', 'Tajawal', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Reem Kufi', 'Aref Ruqaa', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--blood), var(--gold), var(--olive));
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ========== PRELOADER ========== */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .preloader.hidden { opacity: 0; visibility: hidden; }
+
+        .preloader-content { text-align: center; }
+
+        .medal-loader {
+            font-size: 4rem;
+            animation: medalSpin 3s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 10px 30px rgba(201, 169, 97, 0.6));
+        }
+
+        @keyframes medalSpin {
+            0%, 100% { transform: rotate(-8deg) scale(1); }
+            50% { transform: rotate(8deg) scale(1.1); }
+        }
+
+        .loader-text {
+            font-family: 'Aref Ruqaa', 'Reem Kufi', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--gold), var(--sand), var(--gold));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 2s ease infinite;
+            margin-top: 20px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 18px 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 23, 19, 0.94);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(201, 169, 97, 0.15);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-decoration: none;
+            font-family: 'Reem Kufi', sans-serif;
+            transition: var(--transition);
+        }
+
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--gold), var(--olive));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.7) 50%, transparent 70%);
+            transform: translateX(-150%);
+            transition: transform 0.8s ease;
+        }
+
+        .logo:hover .logo-icon::after { transform: translateX(150%); }
+        .logo:hover .logo-icon { transform: rotate(-10deg) scale(1.08); }
+
+        .logo-text {
+            background: linear-gradient(135deg, var(--gold), var(--sand), var(--gold-dark));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.85);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 20px;
+            border-radius: 50px;
+            transition: var(--transition-fast);
+            font-family: 'Almarai', sans-serif;
+        }
+
+        .nav-links a:not(.nav-cta):hover,
+        .nav-links a:not(.nav-cta).active {
+            color: var(--gold-light);
+            background: rgba(201, 169, 97, 0.1);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--blood), var(--gold)) !important;
+            color: #fff !important;
+            font-weight: 800 !important;
+            padding: 12px 26px !important;
+            box-shadow: 0 8px 25px rgba(139, 26, 26, 0.4);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139, 26, 26, 0.6);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: rgba(201, 169, 97, 0.15);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            font-size: 1.4rem;
+            color: var(--gold);
+            cursor: pointer;
+            padding: 10px 14px;
+            border-radius: 12px;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--dark);
+            padding: 120px 0 60px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            filter: sepia(0.4) contrast(1.1) brightness(0.75);
+            transform: scale(1.05);
+            animation: slowZoom 25s ease-in-out infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(26,23,19,0.95) 0%, rgba(42,37,32,0.8) 50%, rgba(26,23,19,0.95) 100%);
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 70px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content .badge-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(201, 169, 97, 0.12);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            color: var(--gold-light);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-top i {
+            color: var(--gold);
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.3) rotate(20deg); }
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #fff;
+            margin-bottom: 30px;
+            font-family: 'Reem Kufi', sans-serif;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content h1 .highlight {
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(135deg, var(--blood) 0%, var(--gold) 50%, var(--blood) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            font-family: 'Aref Ruqaa', serif;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.12rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 40px;
+            max-width: 560px;
+            line-height: 1.9;
+        }
+
+        .hero-content p strong {
+            color: var(--gold-light);
+            font-weight: 800;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 55px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.02rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: 'Almarai', sans-serif;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blood), var(--gold));
+            color: #fff;
+            box-shadow: 0 12px 40px rgba(139, 26, 26, 0.45);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 55px rgba(139, 26, 26, 0.65);
+        }
+
+        .btn-outline {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            border: 2px solid rgba(201, 169, 97, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: rgba(201, 169, 97, 0.15);
+            border-color: var(--gold);
+            color: var(--gold-light);
+            transform: translateY(-6px);
+        }
+
+        .play-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(201, 169, 97, 0.7); }
+            50% { box-shadow: 0 0 0 15px rgba(201, 169, 97, 0); }
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 45px;
+            padding-top: 35px;
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+        }
+
+        .stat { position: relative; }
+
+        .stat:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 45px;
+            background: rgba(201, 169, 97, 0.25);
+        }
+
+        .stat h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold), var(--sand));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Reem Kufi', sans-serif;
+            line-height: 1.2;
+        }
+
+        .stat p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.55);
+            margin: 0;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 4/5;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(139, 26, 26, 0.4),
+                        0 0 0 15px rgba(201, 169, 97, 0.08),
+                        0 0 0 30px rgba(201, 169, 97, 0.04);
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.3) contrast(1.05);
+            transition: transform 1.2s ease;
+        }
+
+        .hero-image-container:hover img { transform: scale(1.08); }
+
+        .hero-image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(26,23,19,0.7));
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: rgba(42, 37, 32, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(201, 169, 97, 0.35);
+            padding: 14px 22px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: #fff;
+            animation: float 4s ease-in-out infinite;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            z-index: 3;
+            font-family: 'Almarai', sans-serif;
+        }
+
+        .floating-badge i {
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        .badge-1 { top: 5%; right: -10%; animation-delay: 0s; }
+        .badge-2 { bottom: 22%; left: -14%; animation-delay: 1.5s; }
+        .badge-3 { bottom: 5%; right: -8%; animation-delay: 0.8s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* ========== TIMELINE BAR ========== */
+        .timeline-bar {
+            background: var(--dark-2);
+            padding: 35px 0;
+            border-top: 1px solid rgba(201, 169, 97, 0.1);
+            border-bottom: 1px solid rgba(201, 169, 97, 0.1);
+        }
+
+        .timeline-inner {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            font-family: 'Almarai', sans-serif;
+        }
+
+        .timeline-item i {
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, var(--gold), var(--blood));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ========== SECTION TITLE ========== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title .subtitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(139, 26, 26, 0.15), rgba(201, 169, 97, 0.15));
+            color: var(--blood);
+            padding: 10px 26px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.88rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(139, 26, 26, 0.3);
+            font-family: 'Almarai', sans-serif;
+        }
+
+        .section-title h2 {
+            font-size: 2.9rem;
+            font-weight: 800;
+            color: var(--dark);
+            font-family: 'Reem Kufi', sans-serif;
+            margin-bottom: 18px;
+            line-height: 1.3;
+        }
+
+        .section-title h2 .gradient-text {
+            background: linear-gradient(135deg, var(--blood), var(--gold), var(--olive));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ========== INTRO SECTION ========== */
+        .intro-section {
+            padding: 140px 0;
+            background: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .intro-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            transition: var(--transition);
+            border: 1px solid rgba(201, 169, 97, 0.15);
+            box-shadow: 0 10px 40px rgba(26, 23, 19, 0.06);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--blood), var(--gold), var(--blood), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.7s ease;
+        }
+
+        .intro-card:hover::before { transform: translateX(100%); }
+
+        .intro-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(139, 26, 26, 0.3);
+        }
+
+        .intro-icon {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--blood), var(--gold));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.1rem;
+            color: #fff;
+            box-shadow: 0 15px 40px rgba(139, 26, 26, 0.3);
+            transition: var(--transition);
+            transform: rotate(-8deg);
+        }
+
+        .intro-card:hover .intro-icon { transform: rotate(8deg) scale(1.1); }
+
+        .intro-card h3 {
+            color: var(--dark);
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+            font-family: 'Reem Kufi', sans-serif;
+        }
+
+        .intro-card p {
+            color: var(--text-light);
+            font-size: 0.93rem;
+            line-height: 1.8;
+        }
+
+        /* ========== TIMELINE SECTION ========== */
+        .timeline-section {
+            padding: 140px 0;
+            background: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 26, 26, 0.08), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 3px;
+            background: linear-gradient(180deg, var(--blood), var(--gold), var(--olive));
+            border-radius: 2px;
+        }
+
+        .timeline-item-card {
+            position: relative;
+            width: 50%;
+            padding: 0 50px;
+            margin-bottom: 60px;
+        }
+
+        .timeline-item-card:nth-child(odd) {
+            margin-right: auto;
+            padding-left: 0;
+            padding-right: 50px;
+            text-align: left;
+        }
+
+        .timeline-item-card:nth-child(even) {
+            margin-left: auto;
+            padding-right: 0;
+            padding-left: 50px;
+            text-align: right;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--blood), var(--gold));
+            border: 4px solid var(--cream);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(139, 26, 26, 0.2);
+            z-index: 3;
+        }
+
+        .timeline-item-card:nth-child(odd) .timeline-dot {
+            left: -12px;
+        }
+
+        .timeline-item-card:nth-child(even) .timeline-dot {
+            right: -12px;
+        }
+
+        .timeline-content {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: 0 15px 50px rgba(26, 23, 19, 0.1);
+            transition: var(--transition);
+            border: 1px solid rgba(201, 169, 97, 0.15);
+            position: relative;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(139, 26, 26, 0.3);
+        }
+
+        .timeline-year {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--blood), var(--gold));
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+            font-family: 'Reem Kufi', sans-serif;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+            font-family: 'Reem Kufi', sans-serif;
+        }
+
+        .timeline-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* ========== BATTLES SECTION ========== */
+        .battles-section {
+            padding: 140px 0;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 50%, var(--dark-3) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .battles-section::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(139, 26, 26, 0.15), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .battles-section .section-title h2 { color: #fff; }
+        .battles-section .section-title p { color: rgba(255,255,255,0.6); }
+        .battles-section .section-title .subtitle {
+            background: rgba(139, 26, 26, 0.2);
+            color: var(--gold-light);
+            border-color: rgba(139, 26, 26, 0.4);
+        }
+
+        .battles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .battle-card {
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(201, 169, 97, 0.15);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .battle-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(139, 26, 26, 0.5);
+            transform: translateY(-12px);
+            box-shadow: 0 30px 80px rgba(139, 26, 26, 0.3);
+        }
+
+        .battle-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .battle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.4) contrast(1.05);
+            transition: transform 1.2s ease;
+        }
+
+        .battle-card:hover .battle-image img {
+            transform: scale(1.12);
+        }
+
+        .battle-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(26,23,19,0.9));
+        }
+
+        .battle-info {
+            padding: 28px;
+        }
+
+        .battle-info h3 {
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 800;
+            font-family: 'Reem Kufi', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .battle-info .battle-date {
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .battle-info p {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.92rem;
+            line-height: 1.8;
+        }
+
+        /* ========== FIGURES SECTION ========== */
+        .figures-section {
+            padding: 140px 0;
+            background: var(--light);
+        }
+
+        .figures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+        }
+
+        .figure-card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(26, 23, 19, 0.08);
+            transition: var(--transition);
+            border: 1px solid rgba(201, 169, 97, 0.12);
+            text-align: center;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(139, 26, 26, 0.3);
+        }
+
+        .figure-image {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, var(--cream), var(--cream-dark));
+        }
+
+        .figure-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.4) contrast(1.1) grayscale(0.3);
+            transition: var(--transition);
+        }
+
+        .figure-card:hover .figure-image img {
+            filter: sepia(0) contrast(1.1) grayscale(0);
+            transform: scale(1.08);
+        }
+
+        .figure-info {
+            padding: 24px;
+        }
+
+        .figure-info h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--dark);
+            font-family: 'Reem Kufi', sans-serif;
+            margin-bottom: 6px;
+        }
+
+        .figure-info .role {
+            color: var(--blood);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .figure-info p {
+            color: var(--text-light);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        /* ========== STATS SECTION ========== */
+        .stats-section {
+            padding: 140px 0;
+            background: linear-gradient(135deg, var(--blood-dark) 0%, var(--blood) 50%, var(--blood-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+            opacity: 0.6;
+        }
+
+        .stats-section .section-title h2 { color: #fff; }
+        .stats-section .section-title p { color: rgba(255,255,255,0.75); }
+        .stats-section .section-title .subtitle {
+            background: rgba(255,255,255,0.1);
+            color: var(--gold-light);
+            border-color: rgba(201, 169, 97, 0.4);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: var(--radius);
+            padding: 40px 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.3);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .stat-card h3 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #fff;
+            font-family: 'Reem Kufi', sans-serif;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* ========== QUOTES SECTION ========== */
+        .quotes-section {
+            padding: 140px 0;
+            background: var(--cream);
+        }
+
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .quote-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: 0 15px 50px rgba(26, 23, 19, 0.08);
+            transition: var(--transition);
+            border: 1px solid rgba(201, 169, 97, 0.12);
+            position: relative;
+            border-right: 5px solid var(--blood);
+        }
+
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 6rem;
+            color: rgba(139, 26, 26, 0.1);
+            font-family: 'Aref Ruqaa', serif;
+            line-height: 1;
+        }
+
+        .quote-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(139, 26, 26, 0.3);
+            border-right-color: var(--gold);
+        }
+
+        .quote-card p {
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 2;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 2;
+            font-family: 'Amiri', serif;
+            font-style: italic;
+        }
+
+        .quote-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+        }
+
+        .quote-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blood), var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .quote-author h4 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--dark);
+            font-family: 'Reem Kufi', sans-serif;
+            margin-bottom: 2px;
+        }
+
+        .quote-author span {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery {
+            padding: 140px 0;
+            background: var(--light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: var(--transition);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.5) contrast(1.05) brightness(0.9);
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+            filter: sepia(0.2) contrast(1.05) brightness(1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(26,23,19,0.8));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .gallery-item:hover::after { opacity: 1; }
+
+        .gallery-icon {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--blood), var(--gold));
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-icon {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .gallery-item:nth-child(2) { grid-column: span 1; grid-row: span 1; }
+        .gallery-item:nth-child(3) { grid-column: span 1; grid-row: span 1; }
+        .gallery-item:nth-child(4) { grid-column: span 1; grid-row: span 1; }
+        .gallery-item:nth-child(5) { grid-column: span 1; grid-row: span 1; }
+
+        /* ========== LEGACY SECTION ========== */
+        .legacy-section {
+            padding: 140px 0;
+            background: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .legacy-images {
+            position: relative;
+            height: 500px;
+        }
+
+        .legacy-img {
+            position: absolute;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .legacy-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.4) contrast(1.05);
+        }
+
+        .legacy-img-1 {
+            width: 65%;
+            height: 70%;
+            top: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        .legacy-img-2 {
+            width: 55%;
+            height: 55%;
+            bottom: 0;
+            left: 0;
+            z-index: 3;
+            border: 8px solid var(--cream);
+        }
+
+        .legacy-img:hover { transform: scale(1.05) rotate(-2deg); }
+
+        .legacy-badge {
+            position: absolute;
+            top: 40%;
+            right: 55%;
+            background: linear-gradient(135deg, var(--blood), var(--gold));
+            color: #fff;
+            padding: 20px 26px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(139, 26, 26, 0.5);
+            z-index: 5;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .legacy-badge h4 {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Reem Kufi', sans-serif;
+            line-height: 1;
+        }
+
+        .legacy-badge p {
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin: 0;
+            font-family: 'Almarai', sans-serif;
+        }
+
+        .legacy-content .subtitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(139, 26, 26, 0.15), rgba(201, 169, 97, 0.15));
+            color: var(--blood);
+            padding: 10px 26px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.88rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(139, 26, 26, 0.3);
+            font-family: 'Almarai', sans-serif;
+        }
+
+        .legacy-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            font-family: 'Reem Kufi', sans-serif;
+            margin-bottom: 22px;
+            line-height: 1.3;
+        }
+
+        .legacy-content h2 .gradient-text {
+            background: linear-gradient(135deg, var(--blood), var(--gold), var(--olive));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .legacy-content p {
+            color: var(--text-light);
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 24px;
+        }
+
+        .legacy-features {
+            list-style: none;
+            margin-bottom: 36px;
+        }
+
+        .legacy-features li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 0;
+            color: var(--text);
+            font-weight: 700;
+            font-size: 0.96rem;
+        }
+
+        .legacy-features li i {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, rgba(139, 26, 26, 0.15), rgba(201, 169, 97, 0.15));
+            color: var(--blood);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* ========== CTA ========== */
+        .cta-section {
+            padding: 130px 0;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--blood-dark) 50%, var(--dark) 100%);
+            background-size: 300% 300%;
+            animation: gradientShift 8s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E");
+            opacity: 0.6;
+        }
+
+        .cta-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 22px;
+            font-family: 'Reem Kufi', sans-serif;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .cta-content p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.9;
+        }
+
+        .btn-white {
+            background: #fff;
+            color: var(--blood);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            font-size: 1.1rem;
+            padding: 20px 48px;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+            color: var(--blood-dark);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 90px 0 0;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-brand .logo { margin-bottom: 24px; }
+
+        .footer-brand p {
+            font-size: 0.93rem;
+            line-height: 1.9;
+            margin-bottom: 28px;
+            max-width: 340px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--blood), var(--gold));
+            color: #fff;
+            border-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 26, 26, 0.4);
+        }
+
+        .footer-col h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 26px;
+            font-family: 'Reem Kufi', sans-serif;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blood), var(--gold));
+            border-radius: 2px;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 14px; }
+
+        .footer-col ul a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: var(--transition-fast);
+            font-size: 0.93rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--gold);
+            transform: translateX(-6px);
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+            font-size: 0.93rem;
+            line-height: 1.7;
+        }
+
+        .footer-contact li i {
+            color: var(--gold);
+            margin-top: 5px;
+            font-size: 1.05rem;
+        }
+
+        .footer-bottom {
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* ========== REVEAL ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
+        .reveal-delay-4 { transition-delay: 0.6s; }
+
+        /* ========== BACK TO TOP ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blood), var(--gold));
+            color: #fff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(139, 26, 26, 0.5);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.show { opacity: 1; visibility: visible; }
+
+        .back-to-top:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 18px 45px rgba(139, 26, 26, 0.7);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .hero .container { grid-template-columns: 1fr; text-align: center; gap: 50px; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { margin: 0 auto 36px; }
+            .hero-buttons { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .hero-visual { order: -1; }
+            .hero-image-container { max-width: 380px; }
+            .legacy-grid { grid-template-columns: 1fr; gap: 60px; }
+            .legacy-images { height: 500px; max-width: 600px; margin: 0 auto; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .floating-badge { display: none; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 220px); }
+            .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 380px;
+                height: 100vh;
+                background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%);
+                flex-direction: column;
+                padding: 110px 30px 30px;
+                box-shadow: -10px 0 50px rgba(0,0,0,0.4);
+                transition: var(--transition);
+                gap: 6px;
+                align-items: stretch;
+                z-index: 1000;
+                overflow-y: auto;
+            }
+            .nav-links.open { right: 0; }
+            .nav-links a {
+                padding: 16px 22px;
+                border-radius: 14px;
+                background: rgba(201, 169, 97, 0.05);
+                border: 1px solid rgba(201, 169, 97, 0.1);
+            }
+            .menu-toggle { display: block; z-index: 1001; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-stats { flex-direction: column; gap: 20px; align-items: center; }
+            .stat:not(:last-child)::after { display: none; }
+            .section-title h2 { font-size: 1.9rem; }
+            .legacy-content h2 { font-size: 1.8rem; }
+            .cta-content h2 { font-size: 1.9rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .legacy-images { height: 400px; }
+            .timeline-inner { justify-content: center; }
+            .timeline-container::before { right: 20px; transform: none; }
+            .timeline-item-card { width: 100%; padding-right: 60px; padding-left: 0; text-align: right !important; margin-right: 0 !important; margin-left: 0 !important; }
+            .timeline-item-card .timeline-dot { right: 8px !important; left: auto !important; }
+            .stat-card h3 { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 1.6rem; }
+            .btn { padding: 15px 28px; font-size: 0.95rem; }
+            .intro-section, .timeline-section, .battles-section, .figures-section, .stats-section, .quotes-section, .gallery, .legacy-section { padding: 90px 0; }
+            .section-title h2 { font-size: 1.6rem; }
+            .legacy-images { height: 320px; }
+            .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(5, 220px); }
+            .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== PRELOADER ========== -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="medal-loader">🎖️</div>
+            <div class="loader-text">1939 - 1945</div>
+        </div>
+    </div>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fas fa-medal"></i></div>
+                <span class="logo-text">الحرب العالمية الثانية</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">الرئيسية</a></li>
+                <li><a href="#intro">نظرة عامة</a></li>
+                <li><a href="#timeline">الجدول الزمني</a></li>
+                <li><a href="#battles">المعارك</a></li>
+                <li><a href="#figures">القادة</a></li>
+                <li><a href="#gallery">المعرض</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="القائمة">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <!-- صورة Hero الرئيسية -->
+            <img src="https://cdn.phototourl.com/free/2026-09-13-028a1a7f-c595-470c-ab60-ed574312de17.jpg" alt="الحرب العالمية الثانية">
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge-top reveal">
+                    <i class="fas fa-history"></i>
+                    <span>رحلة عبر التاريخ · 1939 - 1945</span>
+                </div>
+                <h1 class="reveal reveal-delay-1">الحرب <span class="highlight">العالمية</span><br>الثانية</h1>
+                <p class="reveal reveal-delay-2">أكبر صراع في تاريخ البشرية، غيّر خريطة العالم وأعاد رسم ملامح الحضارة الإنسانية. <strong>ست سنوات</strong> من الحرب، ملايين الضحايا، ودروس لا تُنسى.</p>
+                <div class="hero-buttons reveal reveal-delay-3">
+                    <a href="#intro" class="btn btn-primary">
+                        <i class="fas fa-book-open"></i> ابدأ الرحلة
+                    </a>
+                    <a href="#timeline" class="btn btn-outline">
+                        <div class="play-icon"><i class="fas fa-clock"></i></div>
+                        الجدول الزمني
+                    </a>
+                </div>
+                <div class="hero-stats reveal reveal-delay-4">
+                    <div class="stat">
+                        <h3 data-count="6">6</h3>
+                        <p>سنوات من الحرب</p>
+                    </div>
+                    <div class="stat">
+                        <h3 data-count="30">+30</h3>
+                        <p>دولة مشاركة</p>
+                    </div>
+                    <div class="stat">
+                        <h3 data-count="70">+70</h3>
+                        <p>مليون ضحية</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual reveal reveal-delay-2">
+                <div class="hero-image-container">
+                    <!-- صورة Hero الجانبية -->
+                    <img src="https://cdn.phototourl.com/free/2026-09-13-6839ae01-44e5-4dce-930f-7cb3bd21119b.png" alt="رمز الحرب العالمية الثانية">
+                </div>
+                <div class="floating-badge badge-1">
+                    <i class="fas fa-flag"></i>
+                    <span>1939 - 1945</span>
+                </div>
+                <div class="floating-badge badge-2">
+                    <i class="fas fa-globe"></i>
+                    <span>حرب عالمية</span>
+                </div>
+                <div class="floating-badge badge-3">
+                    <i class="fas fa-book"></i>
+                    <span>درس التاريخ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TIMELINE BAR ========== -->
+    <section class="timeline-bar">
+        <div class="container">
+            <div class="timeline-inner">
+                <div class="timeline-item">
+                    <i class="fas fa-flag"></i>
+                    <span>1939: بداية الحرب</span>
+                </div>
+                <div class="timeline-item">
+                    <i class="fas fa-globe"></i>
+                    <span>1941: توسع الصراع</span>
+                </div>
+                <div class="timeline-item">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>1943: نقطة التحول</span>
+                </div>
+                <div class="timeline-item">
+                    <i class="fas fa-dove"></i>
+                    <span>1945: نهاية الحرب</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== INTRO SECTION ========== -->
+    <section class="intro-section" id="intro">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="subtitle"><i class="fas fa-info-circle"></i> نظرة عامة</span>
+                <h2>ما هي <span class="gradient-text">الحرب العالمية الثانية؟</span></h2>
+                <p>صراع عسكري عالمي استمر من 1939 إلى 1945، شاركت فيه معظم دول العالم</p>
+            </div>
+            <div class="intro-grid">
+                <div class="intro-card reveal">
+                    <div class="intro-icon"><i class="fas fa-users"></i></div>
+                    <h3>الحلفاء والمحور</h3>
+                    <p>انقسم العالم إلى تحالفين: قوات الحلفاء (بريطانيا، الاتحاد السوفيتي، الولايات المتحدة) وقوات المحور (ألمانيا، إيطاليا، اليابان).</p>
+                </div>
+                <div class="intro-card reveal reveal-delay-1">
+                    <div class="intro-icon"><i class="fas fa-skull"></i></div>
+                    <h3>ضحايا الحرب</h3>
+                    <p>خلفت الحرب أكثر من 70 مليون ضحية بين مدنيين وعسكريين، مما جعلها أكثر الصراعات دموية في التاريخ البشري.</p>
+                </div>
+                <div class="intro-card reveal reveal-delay-2">
+                    <div class="intro-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3>ساحات القتال</h3>
+                    <p>دارت المعارك في أوروبا، أفريقيا، آسيا، والمحيط الهادئ، مما جعلها حرباً عالمية بكل معنى الكلمة.</p>
+                </div>
+                <div class="intro-card reveal reveal-delay-3">
+                    <div class="intro-icon"><i class="fas fa-atom"></i></div>
+                    <h3>السلاح النووي</h3>
+                    <p>شهدت الحرب استخدام السلاح النووي لأول مرة في التاريخ ضد هيروشيما وناغازاكي، مما غيّر موازين القوى العالمية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TIMELINE SECTION ========== -->
+    <section class="timeline-section" id="timeline">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="subtitle"><i class="fas fa-clock"></i> الجدول الزمني</span>
+                <h2>محطات <span class="gradient-text">مفصلية</span></h2>
+                <p>تعرف على أهم الأحداث التي شكّلت مسار الحرب العالمية الثانية</p>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-item-card reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1939</span>
+                        <h3>بداية الحرب</h3>
+                        <p>في 1 سبتمبر 1939، غزت ألمانيا النازية بولندا، مما دفع بريطانيا وفرنسا لإعلان الحرب على ألمانيا في 3 سبتمبر. بدأت الحرب العالمية الثانية رسمياً.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item-card reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1940</span>
+                        <h3>سقوط فرنسا</h3>
+                        <p>في يونيو 1940، سقطت فرنسا أمام القوات الألمانية في غضون 6 أسابيع فقط. أصبحت بريطانيا وحيدة في مواجهة ألمانيا النازية.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item-card reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1941</span>
+                        <h3>عملية بربروسا</h3>
+                        <p>في 22 يونيو 1941، غزت ألمانيا الاتحاد السوفيتي في أكبر عملية عسكرية في التاريخ. كما هاجمت اليابان بيرل هاربر في 7 ديسمبر، مما دفع الولايات المتحدة للدخول في الحرب.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item-card reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1942</span>
+                        <h3>معركة ستالينغراد</h3>
+                        <p>بدأت واحدة من أعنف معارك الحرب في أغسطس 1942. استمرت حتى فبراير 1943، وانتهت بهزيمة ألمانيا في أول هزيمة كبرى لها.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item-card reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1943</span>
+                        <h3>نقطة التحول</h3>
+                        <p>بدأت قوى الحلفاء في تحقيق الانتصارات. استسلمت إيطاليا في سبتمبر 1943، وبدأت القوات الأمريكية والبريطانية في التقدم نحو ألمانيا.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item-card reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1944</span>
+                        <h3>يوم النصر D-Day</h3>
+                        <p>في 6 يونيو 1944، نفذ الحلفاء أكبر عملية إنزال بحري في التاريخ على شواطئ نورماندي في فرنسا، مما فتح جبهة جديدة في أوروبا.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item-card reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1945</span>
+                        <h3>نهاية الحرب</h3>
+                        <p>في 8 مايو 1945، استسلمت ألمانيا. في 6 و9 أغسطس، ألقت الولايات المتحدة قنبلتين نوويتين على هيروشيما وناغازاكي. استسلمت اليابان في 2 سبتمبر 1945، لتنتهي الحرب.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BATTLES SECTION ========== -->
+    <section class="battles-section" id="battles">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="subtitle"><i class="fas fa-crosshairs"></i> المعارك الكبرى</span>
+                <h2>معارك <span class="gradient-text">غيّرت التاريخ</span></h2>
+                <p>أهم المعارك الحاسمة التي حددت مسار الحرب العالمية الثانية</p>
+            </div>
+            <div class="battles-grid">
+                <!-- معركة ستالينغراد -->
+                <div class="battle-card reveal">
+                    <div class="battle-image">
+                        <img src="https://cdn.phototourl.com/free/2026-09-13-1961c2bf-0cb6-4f85-b4ab-06b9b1ffc0de.jpg" alt="معركة ستالينغراد">
+                    </div>
+                    <div class="battle-info">
+                        <h3>معركة ستالينغراد</h3>
+                        <div class="battle-date"><i class="fas fa-calendar"></i> أغسطس 1942 - فبراير 1943</div>
+                        <p>أعنف معركة في التاريخ، انتهت بهزيمة ألمانيا وتغيير مسار الحرب لصالح الحلفاء.</p>
+                    </div>
+                </div>
+
+                <!-- إنزال نورماندي -->
+                <div class="battle-card reveal reveal-delay-1">
+                    <div class="battle-image">
+                        <img src="https://cdn.phototourl.com/free/2026-09-13-dd9259ca-0834-45ee-986e-097922942af1.jpg" alt="إنزال نورماندي">
+                    </div>
+                    <div class="battle-info">
+                        <h3>إنزال نورماندي</h3>
+                        <div class="battle-date"><i class="fas fa-calendar"></i> 6 يونيو 1944</div>
+                        <p>أكبر عملية إنزال بحري في التاريخ، فتحت الجبهة الغربية وأدت لتحرير فرنسا.</p>
+                    </div>
+                </div>
+
+                <!-- معركة بريطانيا -->
+                <div class="battle-card reveal reveal-delay-2">
+                    <div class="battle-image">
+                        <img src="https://cdn.phototourl.com/free/2026-09-13-8ed4f3fd-3134-4ae6-a8d8-abf55871bf09.jpg" alt="معركة بريطانيا">
+                    </div>
+                    <div class="battle-info">
+                        <h3>معركة بريطانيا</h3>
+                        <div class="battle-date"><i class="fas fa-calendar"></i> يوليو - أكتوبر 1940</div>
+                        <p>أول معركة جوية كبرى في التاريخ، صمدت فيها بريطانيا أمام القصف الألماني.</p>
+                    </div>
+                </div>
+
+                <!-- معركة ميدواي -->
+                <div class="battle-card reveal">
+                    <div class="battle-image">
+                        <img src="https://cdn.phototourl.com/member/2026-09-13-66ec5d9e-8c93-4e82-80a9-d70387cab54e.jpg" alt="معركة ميدواي">
+                    </div>
+                    <div class="battle-info">
+                        <h3>معركة ميدواي</h3>
+                        <div class="battle-date"><i class="fas fa-calendar"></i> 4 - 7 يونيو 1942</div>
+                        <p>معركة بحرية حاسمة في المحيط الهادئ، أوقفت التوسع الياباني في المنطقة.</p>
+                    </div>
+                </div>
+
+                <!-- معركة العلمين -->
+                <div class="battle-card reveal reveal-delay-1">
+                    <div class="battle-image">
+                        <img src="https://cdn.phototourl.com/member/2026-09-13-6be3dff5-bf6f-466f-8df8-0167eb640135.jpg" alt="معركة العلمين">
+                    </div>
+                    <div class="battle-info">
+                        <h3>معركة العلمين</h3>
+                        <div class="battle-date"><i class="fas fa-calendar"></i> أكتوبر - نوفمبر 1942</div>
+                        <p>معركة حاسمة في شمال أفريقيا، أوقفت تقدم قوات المحور نحو مصر وقناة السويس.</p>
+                    </div>
+                </div>
+
+                <!-- معركة برلين -->
+                <div class="battle-card reveal reveal-delay-2">
+                    <div class="battle-image">
+                        <img src="https://cdn.phototourl.com/member/2026-09-13-ec33f9da-e2b2-481a-9457-e238b24527a2.jpg" alt="معركة برلين">
+                    </div>
+                    <div class="battle-info">
+                        <h3>معركة برلين</h3>
+                        <div class="battle-date"><i class="fas fa-calendar"></i> أبريل - مايو 1945</div>
+                        <p>آخر معركة كبرى في أوروبا، انتهت بسقوط برلين واستسلام ألمانيا.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FIGURES SECTION ========== -->
+    <section class="figures-section" id="figures">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="subtitle"><i class="fas fa-user-tie"></i> القادة</span>
+                <h2>أبرز <span class="gradient-text">شخصيات الحرب</span></h2>
+                <p>القادة الذين قادوا دولهم خلال الحرب العالمية الثانية</p>
+            </div>
+            <div class="figures-grid">
+                <!-- تشرشل -->
+                <div class="figure-card reveal">
+                    <div class="figure-image">
+                        <img src="https://cdn.phototourl.com/member/2026-09-13-6ed36224-43ca-448d-80dd-d79cac9607ff.jpg" alt="ونستون تشرشل">
+                    </div>
+                    <div class="figure-info">
+                        <h3>ونستون تشرشل</h3>
+                        <div class="role">رئيس وزراء بريطانيا</div>
+                        <p>قاد بريطانيا خلال الحرب بقوة وإصرار، وكان رمزاً للمقاومة ضد النازية.</p>
+                    </div>
+                </div>
+
+                <!-- روزفلت -->
+                <div class="figure-card reveal reveal-delay-1">
+                    <div class="figure-image">
+                        <img src="https://cdn.phototourl.com/member/2026-09-13-72c8fb72-3dba-4696-9861-3ebd7579aed5.jpg" alt="فرانكلين روزفلت">
+                    </div>
+                    <div class="figure-info">
+                        <h3>فرانكلين روزفلت</h3>
+                        <div class="role">رئيس الولايات المتحدة</div>
+                        <p>قاد الولايات المتحدة خلال معظم فترات الحرب، وأسس تحالف الحلفاء.</p>
+                    </div>
+                </div>
+
+                <!-- ستالين -->
+                <div class="figure-card reveal reveal-delay-2">
+                    <div class="figure-image">
+                        <img src="https://cdn.phototourl.com/member/2026-09-13-d327aa0c-96bb-44fd-bb32-7d27b3230056.jpg" alt="جوزيف ستالين">
+                    </div>
+                    <div class="figure-info">
+                        <h3>جوزيف ستالين</h3>
+                        <div class="role">زعيم الاتحاد السوفيتي</div>
+                        <p>قاد الاتحاد السوفيتي في مواجهة الغزو الألماني، وكان له دور حاسم في هزيمة النازية.</p>
+                    </div>
+                </div>
+
+                <!-- ديغول -->
+                <div class="figure-card reveal reveal-delay-3">
+                    <div class="figure-image">
+                        <img src="https://cdn.phototourl.com/member/2026-09-13-01e390aa-d941-4a75-9e8e-64963d303dbc.jpg" alt="شارل ديغول">
+                    </div>
+                    <div class="figure-info">
+                        <h3>شارل ديغول</h3>
+                        <div class="role">زعيم فرنسا الحرة</div>
+                        <p>قاد المقاومة الفرنسية ضد الاحتلال الألماني، وأصبح رمزاً للحرية الفرنسية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STATS SECTION ========== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="subtitle"><i class="fas fa-chart-bar"></i> بالأرقام</span>
+                <h2>الحرب في <span class="gradient-text">أرقام صادمة</span></h2>
+                <p>إحصائيات تعكس حجم الكارثة الإنسانية للحرب العالمية الثانية</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <i class="fas fa-skull-crossbones"></i>
+                    <h3 data-count="70">70</h3>
+                    <p>مليون ضحية</p>
+                </div>
+                <div class="stat-card reveal reveal-delay-1">
+                    <i class="fas fa-globe"></i>
+                    <h3 data-count="30">30</h3>
+                    <p>دولة مشاركة</p>
+                </div>
+                <div class="stat-card reveal reveal-delay-2">
+                    <i class="fas fa-clock"></i>
+                    <h3 data-count="2194">2194</h3>
+                    <p>يوم من الحرب</p>
+                </div>
+                <div class="stat-card reveal reveal-delay-3">
+                    <i class="fas fa-fighter-jet"></i>
+                    <h3 data-count="1000000">1M</h3>
+                    <p>طائرة مقاتلة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== QUOTES SECTION ========== -->
+    <section class="quotes-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="subtitle"><i class="fas fa-quote-right"></i> اقتباسات</span>
+                <h2>كلمات <span class="gradient-text">خالدة</span></h2>
+                <p>أشهر الاقتباسات من قادة الحرب العالمية الثانية</p>
+            </div>
+            <div class="quotes-grid">
+                <div class="quote-card reveal">
+                    <p>لن نستسلم أبداً، سنقاتل على الشواطئ، سنقاتل على مواقع الهبوط، سنقاتل في الحقول وفي الشوارع، سنقاتل في التلال، ولن نستسلم أبداً.</p>
+                    <div class="quote-author">
+                        <div class="quote-avatar">ت</div>
+                        <div>
+                            <h4>ونستون تشرشل</h4>
+                            <span>رئيس وزراء بريطانيا</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal reveal-delay-1">
+                    <p>الشجاعة ليست غياب الخوف، بل القدرة على المضي قدماً رغم الخوف. في أحلك اللحظات، نجد أعظم قوانا.</p>
+                    <div class="quote-author">
+                        <div class="quote-avatar">ر</div>
+                        <div>
+                            <h4>فرانكلين روزفلت</h4>
+                            <span>رئيس الولايات المتحدة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal reveal-delay-2">
+                    <p>من يتأخر عن التقدم يصبح متأخراً عن التاريخ. لا يمكننا أن ننتظر، يجب أن نتحرك الآن.</p>
+                    <div class="quote-author">
+                        <div class="quote-avatar">د</div>
+                        <div>
+                            <h4>شارل ديغول</h4>
+                            <span>زعيم فرنسا الحرة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GALLERY ========== -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="subtitle"><i class="fas fa-camera"></i> المعرض</span>
+                <h2>صور من <span class="gradient-text">أرشيف الحرب</span></h2>
+                <p>لقطات تاريخية توثق أحداث الحرب العالمية الثانية</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal">
+                    <img src="https://cdn.phototourl.com/free/2026-09-13-1961c2bf-0cb6-4f85-b4ab-06b9b1ffc0de.jpg" alt="ستالينغراد">
+                    <div class="gallery-icon"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-1">
+                    <img src="https://cdn.phototourl.com/free/2026-09-13-dd9259ca-0834-45ee-986e-097922942af1.jpg" alt="نورماندي">
+                    <div class="gallery-icon"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <img src="https://cdn.phototourl.com/free/2026-09-13-8ed4f3fd-3134-4ae6-a8d8-abf55871bf09.jpg" alt="بريطانيا">
+                    <div class="gallery-icon"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <img src="https://cdn.phototourl.com/member/2026-09-13-66ec5d9e-8c93-4e82-80a9-d70387cab54e.jpg" alt="ميدواي">
+                    <div class="gallery-icon"><i class="fas fa-expand"></i></div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-4">
+                    <img src="https://cdn.phototourl.com/member/2026-09-13-6be3dff5-bf6f-466f-8df8-0167eb640135.jpg" alt="العلمين">
+                    <div class="gallery-icon"><i class="fas fa-expand"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== LEGACY SECTION ========== -->
+    <section class="legacy-section">
+        <div class="container">
+            <div class="legacy-images reveal">
+                <div class="legacy-img legacy-img-1">
+                    <img src="https://cdn.phototourl.com/member/2026-09-13-ec33f9da-e2b2-481a-9457-e238b24527a2.jpg" alt="إرث الحرب">
+                </div>
+                <div class="legacy-img legacy-img-2">
+                    <img src="https://cdn.phototourl.com/free/2026-09-13-028a1a7f-c595-470c-ab60-ed574312de17.jpg" alt="السلام">
+                </div>
+                <div class="legacy-badge">
+                    <h4>1945</h4>
+                    <p>نهاية الحرب</p>
+                </div>
+            </div>
+            <div class="legacy-content reveal reveal-delay-2">
+                <span class="subtitle"><i class="fas fa-dove"></i> الإرث والدروس</span>
+                <h2>دروس <span class="gradient-text">لا تُنسى</span></h2>
+                <p>تركت الحرب العالمية الثانية إرثاً عميقاً في الذاكرة الإنسانية. من رماد الدمار، وُلدت الأمم المتحدة لتحقيق السلام العالمي، وظهر نظام عالمي جديد قائم على التعاون الدولي.</p>
+                <ul class="legacy-features">
+                    <li><i class="fas fa-check"></i> تأسيس الأمم المتحدة عام 1945 لتحقيق السلام</li>
+                    <li><i class="fas fa-check"></i> إعلان حقوق الإنسان العالمي عام 1948</li>
+                    <li><i class="fas fa-check"></i> بداية الحرب الباردة بين الشرق والغرب</li>
+                    <li><i class="fas fa-check"></i> نهاية الاستعمار الأوروبي في آسيا وأفريقيا</li>
+                </ul>
+                <a href="#intro" class="btn btn-primary">
+                    <i class="fas fa-book-open"></i> اقرأ المزيد
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>التاريخ لا يُنسى</h2>
+                <p>تذكر دائماً أن السلام نعمة غالية، وأن دروس الماضي هي بوصلة المستقبل. لنعمل جميعاً من أجل عالم أفضل.</p>
+                <a href="#intro" class="btn btn-white">
+                    <i class="fas fa-book-open"></i> ابدأ الرحلة
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon"><i class="fas fa-medal"></i></div>
+                        <span class="logo-text">الحرب العالمية الثانية</span>
+                    </a>
+                    <p>موقع تاريخي توثيقي يهدف إلى تعريف الأجيال الجديدة بأحداث الحرب العالمية الثانية ودروسها الخالدة.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="انستغرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
+                        <li><a href="#intro"><i class="fas fa-angle-left"></i> نظرة عامة</a></li>
+                        <li><a href="#timeline"><i class="fas fa-angle-left"></i> الجدول الزمني</a></li>
+                        <li><a href="#battles"><i class="fas fa-angle-left"></i> المعارك</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>أقسام الموقع</h3>
+                    <ul>
+                        <li><a href="#figures"><i class="fas fa-angle-left"></i> القادة</a></li>
+                        <li><a href="#gallery"><i class="fas fa-angle-left"></i> المعرض</a></li>
+                        <li><a href="#contact"><i class="fas fa-angle-left"></i> الإرث</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> المراجع</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>معلومات تاريخية</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-calendar"></i> 1 سبتمبر 1939 - 2 سبتمبر 1945</li>
+                        <li><i class="fas fa-globe"></i> أوروبا، آسيا، أفريقيا، المحيط الهادئ</li>
+                        <li><i class="fas fa-users"></i> الحلفاء ضد المحور</li>
+                        <li><i class="fas fa-book"></i> أكثر من 70 مليون ضحية</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 موقع الحرب العالمية الثانية. جميع الحقوق محفوظة.</p>
+                <p>صُنع بـ <i class="fas fa-heart" style="color: var(--gold);"></i> توثيقاً للتاريخ</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== BACK TO TOP ========== -->
+    <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // ========== PRELOADER ==========
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 1200);
+        });
+
+        // ========== NAVBAR SCROLL ==========
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            navbar.classList.toggle('scrolled', scrollY > 50);
+            backToTop.classList.toggle('show', scrollY > 500);
+        });
+
+        // ========== MOBILE MENU ==========
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-times');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.classList.remove('fa-times');
+            });
+        });
+
+        // ========== SMOOTH SCROLL ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ========== BACK TO TOP ==========
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ========== REVEAL ==========
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ========== ACTIVE NAV ==========
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ========== COUNTER ==========
+        const counters = document.querySelectorAll('[data-count]');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const num = parseInt(el.getAttribute('data-count'));
+                    const suffix = el.textContent.replace(/[0-9]/g, '').replace(/[+]/g, '');
+                    const prefix = el.textContent.startsWith('+') ? '+' : '';
+                    let current = 0;
+                    const step = num / 60;
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= num) {
+                            current = num;
+                            clearInterval(timer);
+                        }
+                        if (num >= 1000000) {
+                            el.textContent = prefix + (Math.floor(current / 1000000)) + 'M' + suffix;
+                        } else if (num >= 1000) {
+                            el.textContent = prefix + Math.floor(current) + suffix;
+                        } else {
+                            el.textContent = prefix + Math.floor(current) + suffix;
+                        }
+                    }, 30);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(c => counterObserver.observe(c));
+    </script>
+</body>
+</html>
