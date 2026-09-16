@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROAR STORE - نسخة تجريبية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Reem+Kufi:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>ROAR STORE | متجر ألعاب PlayStation</title>
+    <meta name="description" content="ROAR STORE - متجرك الأول لألعاب PlayStation 5 و PlayStation 4 بأفضل الأسعار">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Reem+Kufi:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ========== RESET ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
         
         :root {
             --bg-main: #0A1628;
             --bg-secondary: #1A2B4A;
-            --bg-card: #1A2B4A;
+            --bg-card: #152238;
             --accent: #E63946;
             --accent-hover: #c42d38;
             --green: #06D6A0;
@@ -21,6 +31,11 @@
             --text: #FFFFFF;
             --text-secondary: #A0ABBF;
             --border: rgba(255,255,255,0.08);
+            --shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
@@ -28,114 +43,136 @@
             background: var(--bg-main);
             color: var(--text);
             line-height: 1.6;
-            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
         
-        a { text-decoration: none; color: inherit; }
-        img { max-width: 100%; display: block; }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 16px;
         }
         
-        /* ========== Navbar ========== */
+        /* ========== NAVBAR ========== */
         .navbar {
             background: var(--bg-main);
-            padding: 20px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            transition: all 0.3s;
         }
         
         .navbar .container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 30px;
+            gap: 12px;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             cursor: pointer;
+            flex-shrink: 0;
         }
         
         .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #fff;
+            box-shadow: 0 6px 20px rgba(230,57,70,0.4);
         }
         
         .logo-text h1 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-family: 'Reem Kufi', sans-serif;
             font-weight: 900;
             line-height: 1;
+            color: #fff;
         }
         
         .logo-text span {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--text-secondary);
-            letter-spacing: 4px;
+            letter-spacing: 3px;
+            font-weight: 500;
         }
         
-        .nav-links {
+        .nav-actions {
             display: flex;
-            gap: 25px;
-            list-style: none;
+            align-items: center;
+            gap: 8px;
         }
         
-        .nav-links a {
-            font-size: 15px;
-            color: var(--text-secondary);
-            font-weight: 700;
-            padding: 8px 0;
-            cursor: pointer;
-            transition: color 0.3s;
-            position: relative;
+        .nav-icon-btn {
+            width: 42px;
+            height: 42px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
         }
         
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--accent);
-        }
-        
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
+        .nav-icon-btn:hover,
+        .nav-icon-btn:active {
             background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.05);
         }
         
-        /* ========== Pages ========== */
-        .page { display: none; }
-        .page.active { display: block; }
+        .nav-icon-btn.whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-color: transparent;
+        }
         
-        /* ========== Hero Slider ========== */
+        /* ========== HERO SECTION ========== */
         .hero-section {
-            padding: 40px 0;
+            padding: 20px 0 30px;
         }
         
         .hero-slider {
             position: relative;
             width: 100%;
-            aspect-ratio: 16/5;
-            border-radius: 16px;
+            aspect-ratio: 16/9;
+            border-radius: 20px;
             overflow: hidden;
             background: #000;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
         
         .hero-slide {
@@ -144,6 +181,8 @@
             opacity: 0;
             transition: opacity 0.8s ease;
             cursor: pointer;
+            background-size: cover;
+            background-position: center;
         }
         
         .hero-slide.active {
@@ -151,22 +190,15 @@
             z-index: 2;
         }
         
-        .hero-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
         .hero-slide::after {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(
-                90deg,
+                180deg,
                 transparent 0%,
-                transparent 40%,
-                rgba(10, 22, 40, 0.85) 70%,
+                transparent 30%,
+                rgba(10, 22, 40, 0.6) 70%,
                 rgba(10, 22, 40, 0.95) 100%
             );
             z-index: 1;
@@ -174,137 +206,174 @@
         
         .hero-content {
             position: absolute;
-            top: 50%;
-            right: 60px;
-            transform: translateY(-50%);
+            bottom: 0;
+            right: 0;
+            left: 0;
+            padding: 24px 20px;
             z-index: 3;
             text-align: right;
-            max-width: 450px;
         }
         
         .hero-badge {
             display: inline-block;
             background: var(--accent);
             color: #fff;
-            padding: 6px 16px;
-            border-radius: 6px;
-            font-size: 12px;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
             font-weight: 800;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 15px rgba(230,57,70,0.5);
         }
         
         .hero-content h2 {
             font-family: 'Reem Kufi', sans-serif;
-            font-size: 3rem;
+            font-size: 1.6rem;
             font-weight: 900;
-            line-height: 1;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 8px;
             color: #fff;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.9);
         }
         
-        .hero-content .price {
-            font-size: 1.3rem;
+        .hero-content .hero-price {
+            font-size: 0.95rem;
             font-weight: 700;
             color: var(--green);
-            margin-bottom: 20px;
+            margin-bottom: 14px;
+            display: block;
         }
         
         .btn-hero {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: var(--accent);
             color: #fff;
-            padding: 14px 36px;
-            border-radius: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 0.9rem;
             transition: all 0.3s;
-            border: none;
-            font-family: inherit;
-            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(230,57,70,0.4);
         }
         
-        .btn-hero:hover {
+        .btn-hero:hover,
+        .btn-hero:active {
             background: var(--accent-hover);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(230,57,70,0.6);
         }
         
-        /* Slider Dots */
         .slider-dots {
             position: absolute;
-            bottom: 25px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
+            gap: 6px;
             z-index: 10;
         }
         
         .dot {
-            width: 40px;
-            height: 5px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 3px;
+            width: 8px;
+            height: 8px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s;
         }
         
         .dot.active {
             background: var(--accent);
-            width: 60px;
+            width: 24px;
+            border-radius: 4px;
         }
         
-        /* ========== Section ========== */
+        /* ========== SECTION ========== */
         .section {
-            padding: 50px 0;
+            padding: 30px 0;
         }
         
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         
         .section-header h2 {
             font-family: 'Reem Kufi', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        /* ========== Games Grid ========== */
+        .section-header h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--accent), var(--gold));
+            border-radius: 2px;
+        }
+        
+        .view-all-btn {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s;
+            padding: 8px 14px;
+            border-radius: 50px;
+            background: rgba(230,57,70,0.1);
+            border: 1px solid rgba(230,57,70,0.2);
+        }
+        
+        .view-all-btn:hover,
+        .view-all-btn:active {
+            background: var(--accent);
+            color: #fff;
+            gap: 10px;
+        }
+        
+        /* ========== GAMES GRID ========== */
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
         
         .game-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            position: relative;
         }
         
-        .game-card:hover {
-            transform: translateY(-8px);
+        .game-card:active {
+            transform: scale(0.98);
         }
         
         .game-image {
             position: relative;
             aspect-ratio: 2/3;
-            border-radius: 12px;
             overflow: hidden;
             background: var(--bg-secondary);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-            margin-bottom: 12px;
         }
         
         .game-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
             transition: transform 0.5s;
         }
         
@@ -314,54 +383,262 @@
         
         .game-badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 11px;
+            top: 10px;
+            right: 10px;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.65rem;
             font-weight: 800;
             color: #fff;
             z-index: 2;
+            backdrop-filter: blur(10px);
         }
         
-        .badge-pre { background: var(--accent); }
-        .badge-new { background: var(--green); color: #000; }
-        .badge-hot { background: var(--gold); color: #000; }
+        .badge-pre {
+            background: var(--accent);
+        }
+        
+        .badge-new {
+            background: var(--green);
+            color: #000;
+        }
+        
+        .badge-hot {
+            background: var(--gold);
+            color: #000;
+        }
+        
+        .badge-other {
+            background: #6C5CE7;
+            color: #fff;
+        }
+        
+        .game-info {
+            padding: 12px;
+        }
         
         .game-info h3 {
-            font-size: 15px;
+            font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 6px;
             color: #fff;
+            margin-bottom: 6px;
             line-height: 1.3;
-            min-height: 40px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 36px;
         }
         
         .game-price {
-            font-size: 14px;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--green);
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
         
-        /* ========== Game Detail ========== */
+        .game-price small {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 0.7rem;
+        }
+        
+        /* ========== LOAD MORE ========== */
+        .load-more-container {
+            text-align: center;
+            padding: 24px 0;
+        }
+        
+        .load-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(230,57,70,0.4);
+        }
+        
+        .load-more-btn:hover,
+        .load-more-btn:active {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(230,57,70,0.6);
+        }
+        
+        .load-more-btn i {
+            transition: transform 0.3s;
+        }
+        
+        .load-more-btn:hover i {
+            transform: translateY(3px);
+        }
+        
+        /* ========== PAGES ========== */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ========== SEARCH BAR ========== */
+        .search-section {
+            padding: 16px 0;
+        }
+        
+        .search-bar {
+            position: relative;
+            width: 100%;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 14px 48px 14px 20px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .search-bar input:focus {
+            border-color: var(--accent);
+            background: var(--bg-card);
+            box-shadow: 0 0 0 4px rgba(230,57,70,0.15);
+        }
+        
+        .search-bar input::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        .search-bar i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent);
+            font-size: 1rem;
+            pointer-events: none;
+        }
+        
+        /* ========== FILTERS ========== */
+        .filters-bar {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            scrollbar-width: none;
+        }
+        
+        .filters-bar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--bg-secondary);
+            border: 1.5px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-weight: 700;
+            font-size: 0.82rem;
+            white-space: nowrap;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn:active {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(230,57,70,0.4);
+        }
+        
+        /* ========== RESULTS COUNT ========== */
+        .results-count {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            padding: 0 4px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .results-count strong {
+            color: var(--accent);
+            font-size: 1rem;
+        }
+        
+        /* ========== NO RESULTS ========== */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            display: none;
+        }
+        
+        .no-results.show {
+            display: block;
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            color: var(--text-secondary);
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+        
+        .no-results h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        
+        .no-results p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* ========== GAME DETAIL ========== */
         .back-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             background: var(--bg-secondary);
             color: #fff;
-            padding: 12px 22px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-family: inherit;
+            padding: 10px 20px;
+            border-radius: 50px;
             font-weight: 700;
+            font-size: 0.85rem;
             border: 1px solid var(--border);
-            margin-bottom: 25px;
+            margin-bottom: 16px;
             transition: all 0.3s;
-            font-size: 14px;
         }
         
-        .back-btn:hover {
+        .back-btn:hover,
+        .back-btn:active {
             background: var(--accent);
             border-color: var(--accent);
         }
@@ -369,33 +646,20 @@
         .game-hero {
             position: relative;
             width: 100%;
-            aspect-ratio: 16/5;
-            border-radius: 16px;
+            aspect-ratio: 16/9;
+            border-radius: 20px;
             overflow: hidden;
             background: #000;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-            margin-bottom: 30px;
-        }
-        
-        .game-hero img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+            margin-bottom: 20px;
+            background-size: cover;
+            background-position: center;
         }
         
         .game-hero::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                180deg,
-                transparent 0%,
-                transparent 40%,
-                rgba(10, 22, 40, 0.85) 75%,
-                rgba(10, 22, 40, 0.98) 100%
-            );
-            z-index: 1;
+            background: linear-gradient(180deg, transparent 0%, transparent 30%, rgba(10, 22, 40, 0.7) 70%, rgba(10, 22, 40, 0.98) 100%);
         }
         
         .game-hero-content {
@@ -403,60 +667,59 @@
             bottom: 0;
             right: 0;
             left: 0;
-            padding: 40px;
+            padding: 20px;
             z-index: 2;
             display: flex;
-            gap: 30px;
+            gap: 16px;
             align-items: flex-end;
         }
         
         .game-cover-box {
-            width: 180px;
+            width: 90px;
             flex-shrink: 0;
             aspect-ratio: 2/3;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            border: 3px solid rgba(255,255,255,0.1);
-            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 2px solid rgba(255,255,255,0.15);
+            transform: translateY(-8px);
         }
         
         .game-cover-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
         
         .game-hero-info {
             flex: 1;
-            padding-bottom: 10px;
+            padding-bottom: 4px;
         }
         
         .game-hero-info h1 {
             font-family: 'Reem Kufi', sans-serif;
-            font-size: 2.5rem;
+            font-size: 1.3rem;
             font-weight: 900;
             color: #fff;
-            margin-bottom: 15px;
-            line-height: 1.1;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.9);
         }
         
         .game-meta {
             display: flex;
-            gap: 40px;
+            gap: 16px;
             flex-wrap: wrap;
         }
         
         .meta-item {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
         
         .meta-label {
-            font-size: 12px;
+            font-size: 0.6rem;
             font-weight: 700;
             color: var(--text-secondary);
             text-transform: uppercase;
@@ -464,38 +727,40 @@
         }
         
         .meta-value {
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 0.72rem;
+            font-weight: 700;
             color: #fff;
-        }
-        
-        /* ========== Detail Grid ========== */
-        .detail-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 30px;
+            line-height: 1.3;
         }
         
         .detail-section {
-            background: var(--bg-secondary);
+            background: var(--bg-card);
             border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 25px;
+            padding: 20px;
+            margin-bottom: 16px;
             border: 1px solid var(--border);
         }
         
         .detail-section h2 {
             font-family: 'Reem Kufi', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.05rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            color: #fff;
         }
         
         .detail-section h2 i {
             color: var(--accent);
+            font-size: 1rem;
+        }
+        
+        .detail-section p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.8;
         }
         
         .video-wrapper {
@@ -515,119 +780,287 @@
             border: none;
         }
         
-        /* Variants */
         .platform-title {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             font-weight: 800;
             color: var(--accent);
-            margin: 20px 0 12px;
+            margin: 16px 0 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+        }
+        
+        .platform-title:first-child {
+            margin-top: 0;
         }
         
         .variants-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
         
         .variant-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px;
-            background: var(--bg-main);
-            border-radius: 10px;
+            padding: 14px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
             border: 1px solid var(--border);
             transition: all 0.3s;
             cursor: pointer;
         }
         
-        .variant-item:hover {
+        .variant-item:active {
+            transform: scale(0.98);
             border-color: var(--accent);
-            background: rgba(230,57,70,0.05);
-            transform: translateX(-5px);
+        }
+        
+        .variant-item.out-of-stock {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
         
         .variant-info {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
+            flex: 1;
         }
         
         .variant-title {
             font-weight: 700;
-            font-size: 14px;
+            font-size: 0.82rem;
             color: #fff;
         }
         
         .variant-region {
-            font-size: 12px;
+            font-size: 0.7rem;
             color: var(--text-secondary);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
+        }
+        
+        .variant-price-box {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .variant-old-price {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
         }
         
         .variant-price {
-            font-size: 1.1rem;
-            font-weight: 800;
+            font-size: 1rem;
+            font-weight: 900;
             color: var(--green);
             font-family: 'Reem Kufi', sans-serif;
         }
         
         .btn-whatsapp {
-            width: 100%;
-            padding: 18px;
-            background: #25D366;
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 800;
-            font-family: inherit;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #fff;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            font-weight: 800;
             transition: all 0.3s;
-            margin-top: 20px;
-            text-decoration: none;
+            margin-top: 16px;
+            box-shadow: 0 10px 30px rgba(37,211,102,0.3);
         }
         
-        .btn-whatsapp:hover {
-            background: #1ea952;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+        .btn-whatsapp:hover,
+        .btn-whatsapp:active {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37,211,102,0.5);
         }
         
-        /* Responsive */
-        @media (max-width: 968px) {
-            .nav-links { display: none; }
-            .hero-content { right: 30px; max-width: 350px; }
-            .hero-content h2 { font-size: 2rem; }
-            .detail-grid { grid-template-columns: 1fr; }
-            .game-hero-content { padding: 25px; gap: 20px; }
-            .game-cover-box { width: 140px; }
-            .game-hero-info h1 { font-size: 1.8rem; }
+        /* ========== MOBILE BOTTOM NAV ========== */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+            z-index: 999;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(20px);
         }
         
-        @media (max-width: 600px) {
-            .hero-content { right: 20px; left: 20px; max-width: none; }
-            .hero-content h2 { font-size: 1.5rem; }
-            .games-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .game-hero-content { flex-direction: column; align-items: flex-start; padding: 20px; }
-            .game-cover-box { width: 100px; }
-            .game-hero-info h1 { font-size: 1.4rem; }
-            .game-meta { gap: 20px; }
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 16px;
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            font-weight: 700;
+            transition: all 0.3s;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        
+        .mobile-nav-item i {
+            font-size: 1.2rem;
+        }
+        
+        .mobile-nav-item.active {
+            color: var(--accent);
+            background: rgba(230,57,70,0.1);
+        }
+        
+        /* ========== PADDING BOTTOM FOR MOBILE NAV ========== */
+        body {
+            padding-bottom: 80px;
+        }
+        
+        /* ========== TABLET & DESKTOP ========== */
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 24px;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .game-hero-info h1 {
+                font-size: 1.8rem;
+            }
+            
+            .game-cover-box {
+                width: 120px;
+            }
+            
+            .game-info h3 {
+                font-size: 0.95rem;
+                min-height: 40px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 32px;
+            }
+            
+            .navbar {
+                padding: 16px 0;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.4rem;
+            }
+            
+            .logo-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 1.5rem;
+            }
+            
+            .hero-slider {
+                aspect-ratio: 16/6;
+                border-radius: 24px;
+            }
+            
+            .hero-content {
+                padding: 40px 50px;
+                max-width: 600px;
+            }
+            
+            .hero-content h2 {
+                font-size: 3rem;
+            }
+            
+            .hero-content .hero-price {
+                font-size: 1.2rem;
+            }
+            
+            .btn-hero {
+                padding: 16px 40px;
+                font-size: 1rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 20px;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .game-hero {
+                aspect-ratio: 16/5;
+                border-radius: 24px;
+            }
+            
+            .game-hero-content {
+                padding: 40px;
+                gap: 30px;
+            }
+            
+            .game-cover-box {
+                width: 180px;
+                transform: translateY(-20px);
+            }
+            
+            .game-hero-info h1 {
+                font-size: 2.5rem;
+            }
+            
+            .meta-label {
+                font-size: 0.72rem;
+            }
+            
+            .meta-value {
+                font-size: 0.85rem;
+            }
+            
+            .game-detail-grid {
+                display: grid;
+                grid-template-columns: 1.5fr 1fr;
+                gap: 24px;
+            }
+            
+            .mobile-nav {
+                display: none;
+            }
+            
+            body {
+                padding-bottom: 0;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ========== Navbar ========== -->
+    <!-- ========== NAVBAR ========== -->
     <nav class="navbar">
         <div class="container">
             <div class="logo" onclick="showPage('home')">
@@ -637,66 +1070,125 @@
                     <span>STORE</span>
                 </div>
             </div>
-            <ul class="nav-links">
-                <li><a onclick="showPage('home')" class="active">الرئيسية</a></li>
-                <li><a onclick="showPage('all-games')">كل الألعاب</a></li>
-            </ul>
-            <a href="https://wa.me/201234567890" target="_blank" style="color: #25D366; font-size: 1.5rem;">
-                <i class="fab fa-whatsapp"></i>
-            </a>
+            <div class="nav-actions">
+                <button class="nav-icon-btn" onclick="showPage('all-games')" aria-label="البحث">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="https://wa.me/201274664606" target="_blank" class="nav-icon-btn whatsapp" aria-label="واتساب">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- ========== PAGE: Home ========== -->
+    <!-- ========== PAGE: HOME ========== -->
     <div id="page-home" class="page active">
         
         <!-- Hero Slider -->
         <section class="hero-section">
             <div class="container">
-                <div class="hero-slider" id="heroSlider">
-                    <!-- يتم توليده بـ JavaScript -->
-                </div>
+                <div class="hero-slider" id="heroSlider"></div>
             </div>
         </section>
 
-        <!-- Games Sections -->
+        <!-- Pre-Order Section -->
         <section class="section">
             <div class="container">
                 <div class="section-header">
                     <h2>Pre-Order</h2>
+                    <button class="view-all-btn" onclick="filterFromNav('pre')">
+                        عرض الكل <i class="fas fa-arrow-left"></i>
+                    </button>
                 </div>
                 <div class="games-grid" id="preGrid"></div>
             </div>
         </section>
 
+        <!-- New Arrivals Section -->
         <section class="section">
             <div class="container">
                 <div class="section-header">
                     <h2>وصل حديثاً</h2>
+                    <button class="view-all-btn" onclick="filterFromNav('new')">
+                        عرض الكل <i class="fas fa-arrow-left"></i>
+                    </button>
                 </div>
                 <div class="games-grid" id="newGrid"></div>
             </div>
         </section>
 
-    </div>
-
-    <!-- ========== PAGE: All Games ========== -->
-    <div id="page-all-games" class="page">
+        <!-- Top Sellers Section -->
         <section class="section">
             <div class="container">
-                <h1 style="font-family: 'Reem Kufi', sans-serif; font-size: 2rem; margin-bottom: 30px;">
-                    كل الألعاب
-                </h1>
-                <div class="games-grid" id="allGamesGrid"></div>
+                <div class="section-header">
+                    <h2>الأكثر مبيعاً</h2>
+                    <button class="view-all-btn" onclick="filterFromNav('hot')">
+                        عرض الكل <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <div class="games-grid" id="hotGrid"></div>
             </div>
         </section>
+
     </div>
 
-    <!-- ========== PAGE: Game Detail ========== -->
+    <!-- ========== PAGE: ALL GAMES ========== -->
+    <div id="page-all-games" class="page">
+        
+        <!-- Search Bar -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." autocomplete="off">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters -->
+        <div class="container">
+            <div class="filters-bar">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="pre">Pre-Order</button>
+                <button class="filter-btn" data-filter="new">وصل حديثاً</button>
+                <button class="filter-btn" data-filter="hot">الأكثر مبيعاً</button>
+                <button class="filter-btn" data-filter="other">أخرى</button>
+            </div>
+            
+            <div class="results-count">
+                <span>عرض <strong id="resultsCount">0</strong> لعبة</span>
+                <span id="totalCount"></span>
+            </div>
+        </div>
+
+        <!-- Games Grid -->
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="games-grid" id="allGamesGrid"></div>
+                
+                <!-- Load More -->
+                <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+                    <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">
+                        عرض المزيد <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                
+                <!-- No Results -->
+                <div class="no-results" id="noResults">
+                    <i class="fas fa-search"></i>
+                    <h3>لا توجد نتائج</h3>
+                    <p>جرب كلمة بحث أخرى</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ========== PAGE: GAME DETAIL ========== -->
     <div id="page-game" class="page">
         <section class="section">
             <div class="container">
-                <button class="back-btn" onclick="showPage('home')">
+                <button class="back-btn" onclick="goBack()">
                     <i class="fas fa-arrow-right"></i> رجوع
                 </button>
                 <div id="gameDetailContent"></div>
@@ -704,91 +1196,434 @@
         </section>
     </div>
 
+    <!-- ========== MOBILE BOTTOM NAV ========== -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-item active" onclick="showPage('home')" id="mobHome">
+            <i class="fas fa-home"></i>
+            <span>الرئيسية</span>
+        </div>
+        <div class="mobile-nav-item" onclick="showPage('all-games')" id="mobGames">
+            <i class="fas fa-gamepad"></i>
+            <span>الألعاب</span>
+        </div>
+        <a href="https://wa.me/201274664606" target="_blank" class="mobile-nav-item">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب</span>
+        </a>
+    </div>
+
     <script>
         // ============================================
-        // إعدادات
+        // ⚙️ الإعدادات - غيّر من هنا
         // ============================================
-        const WHATSAPP_NUMBER = '201234567890'; // ✏️ غيّر الرقم
-
+        const WHATSAPP_NUMBER = '201274664606'; // ← رقم واتساب (بدون + وبدون 0)
+        const BASE_URL = 'https://breakers-store.site'; // ← رابط الصور
+        const PRICE_ADD = 100; // ← إضافة للأسعار
+        const GAMES_PER_PAGE = 20; // ← عدد الألعاب في كل تحميل
+        
         // ============================================
-        // بيانات الألعاب
+        // بيانات الألعاب (40 لعبة)
         // ============================================
         const gamesData = [
             {
-                id: 'ea-fc-27',
+                id: 'ea-sports-fc-27',
                 title: 'EA Sports FC 27',
-                category: 'new',
-                badge: 'جديد',
-                badgeType: 'badge-new',
-                cover: 'https://cdn.phototourl.com/member/2026-09-15-66220152-a2d9-454b-8d9a-0b619313fb08.png',
-                hero: 'https://i.ibb.co/wZyhDYzZ/Gemini-Generated-Image-l65p4nl65p4nlp65p.jpg',
-                video: 'https://youtu.be/SAGT2U-PGgM?si=IeaWJislxgG4iLfO',
+                category: 'pre',
+                badge: 'Pre-Order',
+                badgeType: 'badge-pre',
+                cover: BASE_URL + '/uploads/products/ea-sports-fc-27-1784902786672.png',
+                hero: BASE_URL + '/uploads/products/ea-sports-fc-27-1784902883002.jpg',
+                video: 'https://www.youtube.com/watch?v=xg9NAaKmAw8',
+                description: 'Welcome to The World\'s Game in EA Sports FC 27. Step into The Grounds to experience a football playground where the streets meet the stadium, and feel greater control in every mode as community-driven innovations deliver more true-to-football gameplay.',
                 space: '63.5 GB',
                 platforms: 'PlayStation / PC / Xbox',
-                genres: 'Open World / Sports / Simulation',
+                genres: 'Sports / Simulation / Multiplayer',
+                languages: ['English', 'Arabic'],
                 variants: [
-                    { platform: 'PS4', title: 'Primary', price: 900 },
-                    { platform: 'PS4', title: 'Primary Ultimate', price: 1000 },
-                    { platform: 'PS4', title: 'Secondary Ultimate', price: 2250 },
-                    { platform: 'PS5', title: 'Primary', price: 2100 },
-                    { platform: 'PS5', title: 'Secondary', price: 1200 },
-                    { platform: 'PS5', title: 'Primary Ultimate', price: 2500 },
-                    { platform: 'PS5', title: 'Secondary Ultimate', price: 2250 }
+                    { platform: 'PS5', title: 'Primary - Standard', price: 2000 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary - Standard', price: 1100 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Primary - Ultimate', price: 2500 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary - Ultimate', price: 2500 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS4', title: 'Primary - Standard', price: 1000 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS4', title: 'Primary - Ultimate', price: 1200 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PC', title: 'Standard Edition', price: 2300 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PC', title: 'Ultimate Edition', price: 3850 + PRICE_ADD, region: 'Global' }
                 ]
             },
             {
                 id: 'gta-6',
-                title: 'Grand Theft Auto VI',
+                title: 'Grand Theft Auto VI (GTA VI)',
                 category: 'pre',
                 badge: 'Pre-Order',
                 badgeType: 'badge-pre',
-                cover: 'https://cdn.phototourl.com/member/2026-09-15-f33575c1-4959-4f74-aa90-a7c2bef19976.png',
-                hero: 'https://cdn.phototourl.com/member/2026-09-15-8149bbb7-99e7-4f5d-9682-1f075a881a85.png',
-                video: 'https://youtu.be/tJbzMqJGH4k?si=yTeq3P8J5AJXzKC9',
+                cover: BASE_URL + '/uploads/products/grand-theft-auto-vi-1782336243163.png',
+                hero: BASE_URL + '/uploads/products/grand-theft-auto-vi-1772571453334.png',
+                video: 'https://www.youtube.com/watch?v=QdBZY2fkU-0',
+                description: 'Grand Theft Auto VI heads to the state of Leonida, home to the neon-soaked streets of Vice City and beyond in the biggest, most immersive evolution of the Grand Theft Auto series yet.',
                 space: '280 GB',
                 platforms: 'PlayStation 5',
                 genres: 'Open World / Action / Racing',
+                languages: ['English'],
                 variants: [
-                    { platform: 'PS5', title: 'Primary', price: 2400 },
-                    { platform: 'PS5', title: 'Secondary', price: 1800 },
-                    { platform: 'PS5', title: 'Primary Ultimate', price: 3400 },
-                    { platform: 'PS5', title: 'Secondary Ultimate', price: 2100 },
-                    { platform: 'PS5', title: 'Full Ultimate', price: 5050 },
-                    { platform: 'PS5', title: 'Full Standard', price: 3950 }
+                    { platform: 'PS5', title: 'Primary - Standard', price: 2550 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary - Standard', price: 1700 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Full - Standard', price: 3850 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Primary - Ultimate', price: 3300 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary - Ultimate', price: 2150 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Full - Ultimate', price: 4950 + PRICE_ADD, region: 'Global' }
                 ]
             },
             {
-                id: 'aot-3',
-                title: 'Attack on Titan 3',
+                id: 'ac-black-flag',
+                title: "Assassin's Creed Black Flag Resynced",
+                category: 'other',
+                badge: 'جديد',
+                badgeType: 'badge-new',
+                cover: BASE_URL + '/uploads/products/assassins-creed-black-flag-resynced-1781705670322.png',
+                hero: BASE_URL + '/uploads/products/assassins-creed-black-flag-resynced-1781705672407.png',
+                video: 'https://www.youtube.com/watch?v=PhQ3yQjUgAc',
+                description: "The iconic solo pirate adventure returns with Assassin's Creed Black Flag Resynced, launching on July 9, 2026. Sail the Caribbean as Edward Kenway during the Golden Age of Piracy.",
+                space: '83 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Action / Adventure / RPG',
+                languages: ['English', 'Arabic'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary - Standard', price: 1850 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary - Standard', price: 1250 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Primary - Deluxe', price: 2300 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary - Deluxe', price: 1650 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PC', title: 'Standard Edition', price: 2500 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'wolverine',
+                title: "Marvel's Wolverine",
+                category: 'new',
+                badge: 'عرض خاص',
+                badgeType: 'badge-hot',
+                cover: BASE_URL + '/uploads/products/marvels-wolverine-1780565967288.png',
+                hero: BASE_URL + '/uploads/products/marvels-wolverine-1780565972938.jpg',
+                video: 'https://www.youtube.com/watch?v=OiBo_NgYI5Q',
+                description: "Marvel's Wolverine is an upcoming single-player action-adventure game developed by Insomniac Games in collaboration with Marvel Games and Sony Interactive Entertainment.",
+                space: '120 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Action / Adventure / Hack & Slash',
+                languages: ['English', 'Arabic'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 2200 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 1650 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'phantom-blade-0',
+                title: 'Phantom Blade 0',
                 category: 'pre',
                 badge: 'Pre-Order',
                 badgeType: 'badge-pre',
-                cover: 'https://cdn.phototourl.com/member/2026-09-15-672ae383-00e8-4032-b4a8-a41e02a37f1c.png',
-                hero: 'https://cdn.phototourl.com/member/2026-09-15-36fdc540-618f-422e-8a10-8149571a4746.png',
-                video: 'https://youtu.be/GdYvajGiPnY?si=ewuxDX5zj1aS8isZ',
+                cover: BASE_URL + '/uploads/products/phantom-blade-0-1786556064048.jpg',
+                hero: BASE_URL + '/uploads/products/phantom-blade-0-1786556099814.png',
+                video: 'https://www.youtube.com/watch?v=XnKM3cXBD3M',
+                description: 'Framed for the death of his master and left with a ruined heart, Soul has sixty-six days to live. Alone and hunted by his former comrades, he moves through a world of shifting loyalties and silent blades.',
+                space: '100 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Open World / Adventure / Hack & Slash / RPG',
+                languages: ['English'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 1750 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 1150 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'blood-of-dawnwalker',
+                title: 'The Blood of Dawnwalker',
+                category: 'new',
+                badge: 'عرض خاص',
+                badgeType: 'badge-hot',
+                cover: BASE_URL + '/uploads/products/the-blood-of-dawnwalker-1781608656853.png',
+                hero: BASE_URL + '/uploads/products/the-blood-of-dawnwalker-1781610791109.jpg',
+                video: 'https://www.youtube.com/watch?v=te73UInH8H8',
+                description: 'The Blood of Dawnwalker is an open-world dark fantasy action RPG set in 14th-century Europe. You play as Coen, human by day and vampire by night, fighting to save your family.',
+                space: '60 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Action / Adventure / RPG',
+                languages: ['English'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 2000 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 1500 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PC', title: 'Standard Edition', price: 2650 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'mortal-shell-2',
+                title: 'Mortal Shell II',
+                category: 'new',
+                badge: 'وصل حديثاً',
+                badgeType: 'badge-new',
+                cover: BASE_URL + '/uploads/products/mortal-shell-ii-1787067114695.jpg',
+                hero: BASE_URL + '/uploads/products/mortal-shell-ii-1787067129742.png',
+                video: 'https://www.youtube.com/watch?v=KJWAUJhInH0',
+                description: 'Their Flesh Is Your Weapon. Mortal Shell II is a standalone sequel action-RPG with adrenaline-charged, high-stakes combat.',
+                space: '30 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Open World / Action / Adventure / RPG / Horror',
+                languages: ['English'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 1200 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 850 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'sinking-city-2',
+                title: 'The Sinking City 2',
+                category: 'new',
+                badge: 'وصل حديثاً',
+                badgeType: 'badge-new',
+                cover: BASE_URL + '/uploads/products/the-sinking-city-2-1787333423657.png',
+                hero: BASE_URL + '/uploads/products/the-sinking-city-2-1787333438630.png',
+                video: 'https://www.youtube.com/watch?v=PHzSgbFzfDo',
+                description: 'The Sinking City 2 is a terrifying Lovecraftian journey, powered by Unreal Engine 5. Experience a heart-pounding survival horror.',
+                space: '48 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Shooter / Adventure / Horror / Survival',
+                languages: ['English', 'Arabic'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 1500 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 1000 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'beast-of-reincarnation',
+                title: 'Beast of Reincarnation',
+                category: 'new',
+                badge: 'وصل حديثاً',
+                badgeType: 'badge-new',
+                cover: BASE_URL + '/uploads/products/beast-of-reincarnation-1785837486073.jpg',
+                hero: BASE_URL + '/uploads/products/beast-of-reincarnation-1785837502900.jpg',
+                video: 'https://www.youtube.com/watch?v=3dw0ePZ8GLc',
+                description: 'In post-apocalyptic Japan, humanity\'s last hope may rest with Emma and her loyal canine companion, Koo. Explore what it means to be human in Beast of Reincarnation.',
+                space: '30 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Action / Adventure / RPG',
+                languages: ['English'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 1680 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 1120 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'resonance-plague-tale',
+                title: 'Resonance: A Plague Tale Legacy',
+                category: 'new',
+                badge: 'وصل حديثاً',
+                badgeType: 'badge-new',
+                cover: BASE_URL + '/uploads/products/resonance-a-plague-tale-legacy-1781705075349.png',
+                hero: BASE_URL + '/uploads/products/resonance-a-plague-tale-legacy-1781705080705.jpg',
+                video: 'https://www.youtube.com/watch?v=K3wOM3Fq3BI',
+                description: 'Resonance: A Plague Tale Legacy is an upcoming action-adventure game developed by Asobo Studio. Set 15 years before A Plague Tale: Requiem.',
+                space: '60 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Action / Adventure / Narrative',
+                languages: ['English', 'Arabic'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 1680 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 1450 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PC', title: 'Standard Edition', price: 1700 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'attack-on-titan-3',
+                title: 'Attack on Titan 3 (A.O.T. 3)',
+                category: 'pre',
+                badge: 'Pre-Order',
+                badgeType: 'badge-pre',
+                cover: BASE_URL + '/uploads/products/attack-on-titan-3-1788344034225.png',
+                hero: BASE_URL + '/uploads/products/attack-on-titan-3-1788344049073.png',
+                video: 'https://www.youtube.com/watch?v=m4x9AOiOgxo',
+                description: 'Experience the story from beginning to end in the ultimate culmination of the Attack on Titan game series.',
                 space: '80 GB',
                 platforms: 'PlayStation 5',
                 genres: 'Action / Hack & Slash',
+                languages: ['English'],
                 variants: [
-                    { platform: 'PS5', title: 'Primary', price: 2000 },
-                    { platform: 'PS5', title: 'Secondary', price: 1400 }
+                    { platform: 'PS5', title: 'Primary', price: 1900 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 1300 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'onimusha-way-sword',
+                title: 'Onimusha: Way of the Sword',
+                category: 'new',
+                badge: 'وصل حديثاً',
+                badgeType: 'badge-new',
+                cover: BASE_URL + '/uploads/products/onimusha-way-of-the-sword-1788341530259.jpg',
+                hero: BASE_URL + '/uploads/products/onimusha-way-of-the-sword-1788341544540.jpg',
+                video: 'https://www.youtube.com/watch?v=v0B_Mvs9E_E',
+                description: 'Fight through bloodstained battlefields of intense swordplay action. Explore the historic Japanese capital of Edo-era Kyoto.',
+                space: '42 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Action / Adventure / Hack & Slash / RPG',
+                languages: ['English', 'Arabic'],
+                variants: [
+                    { platform: 'PS5', title: 'Deluxe - Primary', price: 2250 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Deluxe - Secondary', price: 1600 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'halloween-game',
+                title: 'Halloween: The Game',
+                category: 'new',
+                badge: 'وصل حديثاً',
+                badgeType: 'badge-new',
+                cover: BASE_URL + '/uploads/products/halloween-the-game-1788767001005.jpg',
+                hero: BASE_URL + '/uploads/products/halloween-the-game-1788767072263.jpg',
+                video: 'https://www.youtube.com/watch?v=cJ4YIpaKE7Y',
+                description: 'On Halloween night, 1978, no one is safe from Michael Myers. Become the Boogeyman or fight back against the face of evil itself.',
+                space: '20 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Action / Horror / Survival',
+                languages: ['English'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 1400 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 950 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PC', title: 'Standard Edition', price: 1150 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'mistfall-hunter',
+                title: 'Mistfall Hunter',
+                category: 'new',
+                badge: 'وصل حديثاً',
+                badgeType: 'badge-new',
+                cover: BASE_URL + '/uploads/products/mistfall-hunter-1785836815151.jpg',
+                hero: BASE_URL + '/uploads/products/mistfall-hunter-1785836820532.jpg',
+                video: 'https://www.youtube.com/watch?v=2NcH-Zs-Qtg',
+                description: 'Mistfall Hunter is a third-person action PvPvE extraction RPG. Gear up for different classes, master combos and strategic skills.',
+                space: '34 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Action / RPG / Survival',
+                languages: ['English'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 800 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 500 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'marvel-tokon',
+                title: 'Marvel Tokon: Fighting Souls',
+                category: 'new',
+                badge: 'وصل حديثاً',
+                badgeType: 'badge-new',
+                cover: BASE_URL + '/uploads/products/marvel-tokon-fighting-souls-1786038161328.png',
+                hero: BASE_URL + '/uploads/products/marvel-tokon-fighting-souls-1786038175583.jpg',
+                video: 'https://www.youtube.com/watch?v=vBw6b8VGPxk',
+                description: 'Assemble your team of legendary Marvel characters in the ultimate 4v4 tag team fighter from PlayStation Studios and Marvel Games.',
+                space: '23 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Action / Fighting',
+                languages: ['English', 'Arabic'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 1800 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 1200 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PC', title: 'Standard Edition', price: 2225 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'halo-campaign-evolved',
+                title: 'Halo: Campaign Evolved',
+                category: 'new',
+                badge: 'وصل حديثاً',
+                badgeType: 'badge-new',
+                cover: BASE_URL + '/uploads/products/halo-campaign-evolved-1785838485274.png',
+                hero: BASE_URL + '/uploads/products/halo-campaign-evolved-1785838666838.jpg',
+                video: 'https://www.youtube.com/watch?v=5KhzCSeZxAU',
+                description: 'Halo: Campaign Evolved is a faithful yet modernized remake of Halo: Combat Evolved\'s campaign.',
+                space: '70 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Sci-Fi / Shooter / Action / Adventure',
+                languages: ['English'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 1680 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 1120 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'cod-black-ops-2',
+                title: 'Call of Duty: Black Ops II',
+                category: 'new',
+                badge: 'عرض خاص',
+                badgeType: 'badge-hot',
+                cover: BASE_URL + '/uploads/products/call-of-duty-black-ops-ii-1783688235928.jpg',
+                hero: BASE_URL + '/uploads/products/call-of-duty-black-ops-ii-1783688249921.jpg',
+                video: 'https://www.youtube.com/watch?v=x3tedlWs1XY',
+                description: 'Pushing the boundaries of what fans have come to expect from the record-setting entertainment franchise, Call of Duty: Black Ops II propels players into a near future.',
+                space: '20 GB',
+                platforms: 'PlayStation 5 / PS4',
+                genres: 'Shooter / Action',
+                languages: ['English'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 1150 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 915 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS4', title: 'Primary', price: 600 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: '007-first-light',
+                title: '007: First Light',
+                category: 'other',
+                badge: 'مميز',
+                badgeType: 'badge-other',
+                cover: BASE_URL + '/uploads/products/007-first-light-1778657586811.png',
+                hero: BASE_URL + '/uploads/products/007-first-light-1779343301257.png',
+                video: 'https://www.youtube.com/watch?v=J4qY9DYE184',
+                description: 'Earn the Number. 007 First Light is a thrilling espionage action-adventure game from IO Interactive. Follow James Bond as a young, resourceful recruit in MI6\'s training programme.',
+                space: '80 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Crime / Action / Adventure',
+                languages: ['English'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 2000 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 1600 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PC', title: 'Standard Edition', price: 2400 + PRICE_ADD, region: 'Global' }
+                ]
+            },
+            {
+                id: 'control-resonant',
+                title: 'Control Resonant',
+                category: 'pre',
+                badge: 'Pre-Order',
+                badgeType: 'badge-pre',
+                cover: BASE_URL + '/uploads/products/control-resonant-1782335784320.png',
+                hero: BASE_URL + '/uploads/products/control-resonant-1782335792666.png',
+                video: 'https://www.youtube.com/watch?v=WhQm-ExRz60',
+                description: 'Explore a warped Manhattan on the brink of paranatural annihilation in this thrilling action-adventure RPG.',
+                space: '100 GB',
+                platforms: 'PlayStation 5',
+                genres: 'Sci-Fi / Action / Adventure / RPG',
+                languages: ['English'],
+                variants: [
+                    { platform: 'PS5', title: 'Primary', price: 1680 + PRICE_ADD, region: 'Global' },
+                    { platform: 'PS5', title: 'Secondary', price: 1120 + PRICE_ADD, region: 'Global' }
                 ]
             }
         ];
 
         // ============================================
-        // تحويل لينك YouTube لـ Embed
+        // الدوال الرئيسية
         // ============================================
+        
+        // تحويل رابط يوتيوب لـ embed
         function getEmbedUrl(url) {
             if (!url) return '';
             let videoId = '';
-            
             if (url.includes('youtu.be/')) {
                 videoId = url.split('youtu.be/')[1].split('?')[0];
             } else if (url.includes('youtube.com/watch')) {
-                videoId = new URL(url).searchParams.get('v');
+                try {
+                    videoId = new URL(url).searchParams.get('v');
+                } catch(e) {
+                    videoId = '';
+                }
             }
-            
             return videoId ? `https://www.youtube-nocookie.com/embed/${videoId}` : '';
         }
 
@@ -801,7 +1636,7 @@
 
         function renderHeroSlider() {
             const slider = document.getElementById('heroSlider');
-            const heroGames = gamesData.slice(0, 3);
+            const heroGames = gamesData.slice(0, 5);
             totalSlides = heroGames.length;
             
             let slidesHTML = '';
@@ -811,13 +1646,16 @@
                 const minPrice = Math.min(...game.variants.map(v => v.price));
                 
                 slidesHTML += `
-                    <div class="hero-slide ${index === 0 ? 'active' : ''}" data-index="${index}" onclick="showGame('${game.id}')">
-                        <img src="${game.hero}" alt="${game.title}">
+                    <div class="hero-slide ${index === 0 ? 'active' : ''}" 
+                         style="background-image: url('${game.hero}');"
+                         onclick="showGame('${game.id}')">
                         <div class="hero-content">
                             <span class="hero-badge">${game.badge}</span>
                             <h2>${game.title}</h2>
-                            <p class="price">يبدأ من ${minPrice.toLocaleString()} EGP</p>
-                            <button class="btn-hero">اطلب الآن</button>
+                            <span class="hero-price">يبدأ من ${minPrice.toLocaleString()} ج.م</span>
+                            <button class="btn-hero">
+                                <i class="fas fa-shopping-bag"></i> اطلب الآن
+                            </button>
                         </div>
                     </div>
                 `;
@@ -827,7 +1665,6 @@
             
             slider.innerHTML = slidesHTML + `<div class="slider-dots">${dotsHTML}</div>`;
             
-            // Auto slide
             clearInterval(sliderInterval);
             sliderInterval = setInterval(() => {
                 currentSlide = (currentSlide + 1) % totalSlides;
@@ -842,36 +1679,41 @@
             slides.forEach(s => s.classList.remove('active'));
             dots.forEach(d => d.classList.remove('active'));
             
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
+            if (slides[index]) slides[index].classList.add('active');
+            if (dots[index]) dots[index].classList.add('active');
             
             currentSlide = index;
         }
 
         // ============================================
-        // عرض شبكة الألعاب
+        // Render Games Grid
         // ============================================
-        function renderGamesGrid(containerId, games) {
+        function renderGamesGrid(containerId, games, limit) {
             const container = document.getElementById(containerId);
             if (!container) return;
             
-            if (games.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-secondary); grid-column: 1/-1; text-align: center; padding: 20px;">لا توجد ألعاب</p>';
+            const displayGames = limit ? games.slice(0, limit) : games;
+            
+            if (displayGames.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary); grid-column: 1/-1; text-align: center; padding: 30px;">لا توجد ألعاب</p>';
                 return;
             }
             
-            container.innerHTML = games.map(game => {
+            container.innerHTML = displayGames.map(game => {
                 const minPrice = Math.min(...game.variants.map(v => v.price));
                 
                 return `
                     <div class="game-card" onclick="showGame('${game.id}')">
                         <div class="game-image">
-                            <img src="${game.cover}" alt="${game.title}">
+                            <img src="${game.cover}" alt="${game.title}" loading="lazy" 
+                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;background:#1A2B4A;color:#A0ABBF;font-size:11px;text-align:center;padding:10px;&quot;>صورة غير متوفرة</div>';">
                             <span class="game-badge ${game.badgeType}">${game.badge}</span>
                         </div>
                         <div class="game-info">
                             <h3>${game.title}</h3>
-                            <div class="game-price">يبدأ من ${minPrice.toLocaleString()} EGP</div>
+                            <div class="game-price">
+                                يبدأ من ${minPrice.toLocaleString()} <small>ج.م</small>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -885,47 +1727,70 @@
             const game = gamesData.find(g => g.id === gameId);
             if (!game) return;
             
-            // إخفاء كل الصفحات
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page-game').classList.add('active');
             
             // تجميع النسخ حسب المنصة
-            const ps4Variants = game.variants.filter(v => v.platform === 'PS4');
-            const ps5Variants = game.variants.filter(v => v.platform === 'PS5');
+            const variantsByPlatform = {};
+            game.variants.forEach(v => {
+                if (!variantsByPlatform[v.platform]) {
+                    variantsByPlatform[v.platform] = [];
+                }
+                variantsByPlatform[v.platform].push(v);
+            });
             
             const renderVariant = (v) => `
                 <div class="variant-item" onclick="orderViaWhatsApp('${game.title}', '${v.title}', ${v.price}, '${v.platform}')">
                     <div class="variant-info">
                         <span class="variant-title">${v.title}</span>
-                        <span class="variant-region"><i class="fas fa-globe"></i> Global</span>
+                        <span class="variant-region"><i class="fas fa-globe"></i> ${v.region}</span>
                     </div>
-                    <div class="variant-price">${v.price.toLocaleString()} EGP</div>
+                    <div class="variant-price-box">
+                        <span class="variant-price">${v.price.toLocaleString()} ج.م</span>
+                    </div>
                 </div>
             `;
+            
+            let variantsHTML = '';
+            Object.keys(variantsByPlatform).forEach(platform => {
+                let platformIcon = 'gamepad';
+                if (platform === 'PS5' || platform === 'PS4') platformIcon = 'playstation';
+                else if (platform === 'PC') platformIcon = 'windows';
+                else if (platform === 'Xbox') platformIcon = 'xbox';
+                
+                variantsHTML += `
+                    <div class="platform-title">
+                        <i class="fab fa-${platformIcon}"></i>
+                        ${platform}
+                    </div>
+                    <div class="variants-list">
+                        ${variantsByPlatform[platform].map(renderVariant).join('')}
+                    </div>
+                `;
+            });
             
             const embedUrl = getEmbedUrl(game.video);
             
             document.getElementById('gameDetailContent').innerHTML = `
-                <!-- Hero -->
-                <div class="game-hero">
-                    <img src="${game.hero}" alt="${game.title}">
+                <div class="game-hero" style="background-image: url('${game.hero}');">
                     <div class="game-hero-content">
                         <div class="game-cover-box">
-                            <img src="${game.cover}" alt="${game.title}">
+                            <img src="${game.cover}" alt="${game.title}" 
+                                 onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;aspect-ratio:2/3;background:#1A2B4A;color:#A0ABBF;font-size:10px;text-align:center;padding:10px;&quot;>صورة</div>';">
                         </div>
                         <div class="game-hero-info">
                             <h1>${game.title}</h1>
                             <div class="game-meta">
                                 <div class="meta-item">
-                                    <span class="meta-label">Space Usage</span>
+                                    <span class="meta-label">المساحة</span>
                                     <span class="meta-value">${game.space}</span>
                                 </div>
                                 <div class="meta-item">
-                                    <span class="meta-label">Platforms</span>
+                                    <span class="meta-label">المنصات</span>
                                     <span class="meta-value">${game.platforms}</span>
                                 </div>
                                 <div class="meta-item">
-                                    <span class="meta-label">Genres</span>
+                                    <span class="meta-label">التصنيفات</span>
                                     <span class="meta-value">${game.genres}</span>
                                 </div>
                             </div>
@@ -933,42 +1798,29 @@
                     </div>
                 </div>
                 
-                <!-- Detail Grid -->
-                <div class="detail-grid">
+                <div class="game-detail-grid">
                     <div>
-                        <!-- الفيديو -->
                         ${embedUrl ? `
                         <div class="detail-section">
                             <h2><i class="fas fa-play-circle"></i> فيديو اللعبة</h2>
                             <div class="video-wrapper">
-                                <iframe src="${embedUrl}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                                <iframe src="${embedUrl}" allowfullscreen 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                                </iframe>
                             </div>
                         </div>
                         ` : ''}
+                        
+                        <div class="detail-section">
+                            <h2><i class="fas fa-info-circle"></i> عن اللعبة</h2>
+                            <p>${game.description}</p>
+                        </div>
                     </div>
                     
                     <div>
-                        <!-- اختر النسخة -->
                         <div class="detail-section">
                             <h2><i class="fas fa-shopping-cart"></i> اختر النسخة</h2>
-                            
-                            ${ps5Variants.length > 0 ? `
-                                <div class="platform-title">
-                                    <i class="fab fa-playstation"></i> PlayStation 5
-                                </div>
-                                <div class="variants-list">
-                                    ${ps5Variants.map(renderVariant).join('')}
-                                </div>
-                            ` : ''}
-                            
-                            ${ps4Variants.length > 0 ? `
-                                <div class="platform-title">
-                                    <i class="fab fa-playstation"></i> PlayStation 4
-                                </div>
-                                <div class="variants-list">
-                                    ${ps4Variants.map(renderVariant).join('')}
-                                </div>
-                            ` : ''}
+                            ${variantsHTML}
                             
                             <a href="https://wa.me/${WHATSAPP_NUMBER}" target="_blank" class="btn-whatsapp">
                                 <i class="fab fa-whatsapp"></i> اطلب الآن عبر واتساب
@@ -990,7 +1842,7 @@
 
 🎮 اللعبة: ${gameTitle}
 📦 النسخة: ${variantTitle} (${platform})
-💰 السعر: ${price.toLocaleString()} EGP
+💰 السعر: ${price.toLocaleString()} ج.م
 🌍 المنطقة: Global
 
 من فضلك أرسل لي تفاصيل الدفع.`;
@@ -1001,27 +1853,160 @@
         // ============================================
         // التنقل بين الصفحات
         // ============================================
+        let previousPage = 'home';
+
         function showPage(pageName) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page-' + pageName).classList.add('active');
+            const target = document.getElementById('page-' + pageName);
+            if (target) target.classList.add('active');
             
-            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            if (pageName === 'home') document.querySelector('.nav-links a').classList.add('active');
-            if (pageName === 'all-games') document.querySelectorAll('.nav-links a')[1].classList.add('active');
+            // Update mobile nav
+            document.querySelectorAll('.mobile-nav-item').forEach(item => item.classList.remove('active'));
+            if (pageName === 'home') document.getElementById('mobHome').classList.add('active');
+            if (pageName === 'all-games') document.getElementById('mobGames').classList.add('active');
             
             if (pageName === 'all-games') {
-                renderGamesGrid('allGamesGrid', gamesData);
+                renderAllGames();
+            }
+            
+            if (pageName !== 'game') {
+                previousPage = pageName;
             }
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        function goBack() {
+            showPage(previousPage || 'home');
+        }
+
         // ============================================
-        // التشغيل
+        // صفحة كل الألعاب + البحث + Load More
         // ============================================
-        renderHeroSlider();
-        renderGamesGrid('preGrid', gamesData.filter(g => g.category === 'pre'));
-        renderGamesGrid('newGrid', gamesData.filter(g => g.category === 'new'));
+        let currentFilter = 'all';
+        let currentQuery = '';
+        let displayedCount = GAMES_PER_PAGE;
+
+        function getFilteredGames() {
+            let filtered = [...gamesData];
+            
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(g => g.category === currentFilter);
+            }
+            
+            if (currentQuery) {
+                const q = currentQuery.toLowerCase();
+                filtered = filtered.filter(g => 
+                    g.title.toLowerCase().includes(q) ||
+                    g.genres.toLowerCase().includes(q)
+                );
+            }
+            
+            return filtered;
+        }
+
+        function renderAllGames() {
+            const filtered = getFilteredGames();
+            const grid = document.getElementById('allGamesGrid');
+            const noResults = document.getElementById('noResults');
+            const loadMoreContainer = document.getElementById('loadMoreContainer');
+            const resultsCount = document.getElementById('resultsCount');
+            const totalCount = document.getElementById('totalCount');
+            
+            resultsCount.textContent = Math.min(displayedCount, filtered.length);
+            totalCount.textContent = `من أصل ${filtered.length} لعبة`;
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.add('show');
+                loadMoreContainer.style.display = 'none';
+                return;
+            }
+            
+            noResults.classList.remove('show');
+            
+            const displayGames = filtered.slice(0, displayedCount);
+            
+            grid.innerHTML = displayGames.map(game => {
+                const minPrice = Math.min(...game.variants.map(v => v.price));
+                
+                return `
+                    <div class="game-card" onclick="showGame('${game.id}')">
+                        <div class="game-image">
+                            <img src="${game.cover}" alt="${game.title}" loading="lazy"
+                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;background:#1A2B4A;color:#A0ABBF;font-size:11px;text-align:center;padding:10px;&quot;>صورة غير متوفرة</div>';">
+                            <span class="game-badge ${game.badgeType}">${game.badge}</span>
+                        </div>
+                        <div class="game-info">
+                            <h3>${game.title}</h3>
+                            <div class="game-price">
+                                يبدأ من ${minPrice.toLocaleString()} <small>ج.م</small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Load More visibility
+            if (displayedCount < filtered.length) {
+                loadMoreContainer.style.display = 'block';
+            } else {
+                loadMoreContainer.style.display = 'none';
+            }
+        }
+
+        function loadMore() {
+            displayedCount += GAMES_PER_PAGE;
+            renderAllGames();
+        }
+
+        function filterFromNav(filter) {
+            currentFilter = filter;
+            currentQuery = '';
+            displayedCount = GAMES_PER_PAGE;
+            
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.toggle('active', b.dataset.filter === filter);
+            });
+            
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.value = '';
+            
+            showPage('all-games');
+        }
+
+        // ============================================
+        // Event Listeners
+        // ============================================
+        
+        // Search Input
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    currentQuery = e.target.value.trim();
+                    displayedCount = GAMES_PER_PAGE;
+                    renderAllGames();
+                });
+            }
+            
+            // Filter Buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.filter;
+                    displayedCount = GAMES_PER_PAGE;
+                    renderAllGames();
+                });
+            });
+            
+            // Initialize
+            renderHeroSlider();
+            renderGamesGrid('preGrid', gamesData.filter(g => g.category === 'pre'), 10);
+            renderGamesGrid('newGrid', gamesData.filter(g => g.category === 'new'), 10);
+            renderGamesGrid('hotGrid', gamesData.filter(g => g.category === 'hot').concat(gamesData.filter(g => g.category !== 'hot')).slice(0, 10), 10);
+        });
     </script>
 </body>
 </html>
